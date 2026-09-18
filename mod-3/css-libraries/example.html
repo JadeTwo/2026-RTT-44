@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- external stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- enable tailwind with the cdn link -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- internal styling -->
+    <style>
+        section {
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- using tailwind utility classes -->
+    <div
+        class="flex justify-center items-center h-screen bg-gray-100 sm:bg-gray-300 md:bg-gray-500 lg:bg-gray-900 hover:bg-sky-200">
+        <div class="p-6 bg-white rounded-lg shadow-lg">
+            <h2 class="text-2xl font-semibold text-gray-800">Centered Box</h2>
+        </div>
+    </div>
+
+    <!-- inline styling -->
+    <!-- <section style="background-color: blue;">
+        This is a section element
+    </section> -->
+
+</body>
+
+</html>

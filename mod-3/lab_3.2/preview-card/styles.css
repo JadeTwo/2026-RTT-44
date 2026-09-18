@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Hairline&family=Figtree:ital,wght@0,300..900;1,300..900&family=Lexend+Deca:wght@100..900&display=swap');
+
+
+body {
+    background-color: hsl(47, 88%, 63%);
+    font-family: "Figtree", sans-serif;
+}
+
+main {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+}
+
+
+#container{
+    background-color: #FFFFFF;
+    border: 1px solid black;
+    width: 275px;
+    border-radius: 20px;
+    box-shadow: 8px 8px 0 0 #111111;
+    padding: 25px;
+    margin: 15px;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+}
+
+.top-img{
+    background-image: url(./images/illustration-article.svg);
+    height: 200px;
+    background-size: cover;
+    border-radius: 10px;
+}
+
+p {
+    font-size: 1rem;
+    margin: 8px 0;
+}
+
+.learning {
+    margin-top: 20px;
+    font-size: .8rem;
+}
+
+
+.learning span {
+    background-color: hsl(47, 88%, 63%);
+    border-radius: 5px;
+    padding: 8px;
+    font-weight: bold;
+}
+
+.info {
+    color: hsl(0, 0%, 42%);
+}
+
+h1 {
+    font-size: 1rem;
+}
+h1 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1 a:hover {
+    color: hsl(47, 88%, 63%);
+    text-decoration: underline;
+}
+
+h1 a:focus-visible {
+    outline: 2px solid #111111;
+    outline-offset: 4px;
+    border-radius: 2px;
+}
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.user-info img {
+    width: auto;
+    height: 30px;
+}

@@ -1,0 +1,15 @@
+/* psuedo classes: focus and hover */
+
+input:focus {
+  outline: 2px dashed blue;
+}
+
+label:hover {
+    color: blue;
+}
+
+@media (width >= 300px) and (width <= 500px) {
+  body {
+    background-color: blueviolet;
+  }
+}

@@ -1,0 +1,84 @@
+/* element selector */
+article {
+
+    border: 3px solid black;
+
+    /* border-color: black;
+    border-width: 3px;
+    border-style: solid; */
+}
+
+/* class selector */
+.navbar {
+    border: 3px solid black;
+}
+
+.my-article {
+    border-radius: 10px;
+    background-color: lightblue;
+}
+
+.first-article {
+    color: grey;
+}
+
+/* id selector  */
+#foot {
+    border: 3px solid rgb(86, 86, 237);
+}
+
+/* attribute selector */
+input[type="text"] {
+    border: 3px solid green;
+    margin: 10px;
+}
+
+article {
+    display: inline-block;
+}
+
+header {
+    display: block;
+}
+
+
+/* Default styles */
+body {
+  font-size: 16px;
+  margin: 0;
+}
+ 
+/* Base style for mobile devices */
+body {
+  background-color: olive;
+  color: white;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: 10px solid red;
+    height: 500px;
+}
+
+article {
+    height: 250px;
+    width: 200px;
+}
+
+/* For devices with a minimum width of 768px (Medium) */
+@media screen and (min-width: 500px) {
+  body {
+    background-color: orange;
+    color: white;
+  }
+  /* li { 
+    display: inline-block;
+  } */
+   ul {
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+   }
+}

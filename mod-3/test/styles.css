@@ -1,0 +1,10 @@
+@import url(extra.css);
+
+:root {
+    --blue: rgb(124, 124, 255);
+}
+
+body {
+    background-color: var(--blue);
+}
+

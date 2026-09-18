@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style>
+
+        #big-box {
+            /* display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr; */
+            border: 3px solid blue;
+        }
+        #box-2 {
+            /* grid-row: 1 / 4; */
+            /* grid-row-start: 1;
+            grid-row-end: 4; */
+            /* grid-column: 2 / 3; */
+            /* grid-column-start: 2;
+            grid-column-end: 3; */
+        }
+        div {
+            border: 1px solid black;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="grid grid-cols-2 grid-rows-3" id="big-box">
+        <div class="bg-green-300">Box: Quinn</div>
+        <div id="box-2" class="row-span-3 col-start-2 bg-red-300">Box: Isaias</div>
+        <div class="row-span-2 bg-sky-300">Box: Jade</div>
+    </div>
+
+</body>
+</html>
