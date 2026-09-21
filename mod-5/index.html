@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="script.js" defer></script>
+
+    <style>
+        li {
+            border: 3px solid blue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Hello DOM!</h1>
+    <ul>
+        <li class="item"></li>
+        <li class="item"></li>
+        <li class="item"></li>
+    </ul>
+
+    <hr>
+
+    <ul id="product-list">
+        <li data-id="1">
+            Product 1 
+            <button class="add-to-cart">Add to Cart</button>
+        </li>
+        <li data-id="2">Product 2 <button class="add-to-cart">Add to Cart</button></li>
+    </ul>
+
+    <button id="add-product">Add New Product</button>
+
+    <hr>
+
+    <ul id="batch-list"></ul>
+    <button id="batch-add">Add 100 Items</button>
+</body>
+
+</html>

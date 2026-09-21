@@ -46,3 +46,16 @@ taskList.addEventListener("click", function (event) {
         }
     }
 });
+
+
+let name = 'sally';
+
+console.log(name);
+
+let task = {
+    status: 'Completed'
+}
+
+console.log(task.status);
+
+let greeting = `Hello my name is ${name}.`
