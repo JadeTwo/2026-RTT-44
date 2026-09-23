@@ -15,20 +15,20 @@ longForm.addEventListener('change', function (event) {
     // input.reportValidity();
 
     // check if the input passes validation
-    if (!input.validity.valid) {
-      alert('Please enter your name.');
-      input.focus();
-      return; // Stop further processing if invalid
-    }
+    // if (!input.validity.valid) {
+    //   alert('Please enter your name.');
+    //   input.focus();
+    //   return; // Stop further processing if invalid
+    // }
 
-    // turns the form element into a form object
-    const data = new FormData(longForm);
-    
-    // access the input value using the name attribute
-    console.log(data.get('username'));
-    console.log(data.get('password'));
-    // reset the form 
-    longForm.reset();
+    // // turns the form element into a form object
+    // const data = new FormData(longForm);
+
+    // // access the input value using the name attribute
+    // console.log(data.get('username'));
+    // console.log(data.get('password'));
+    // // reset the form 
+    // longForm.reset();
 
     // check to see if it is a email input
     if (input.id === "email") {
@@ -44,6 +44,7 @@ longForm.addEventListener('change', function (event) {
             input.setCustomValidity(''); // Clear custom error if valid
         }
 
+        // make the built-in HTML tooltip/bubble for the error appear
         input.reportValidity();
 
         // Display the custom message or clear it
