@@ -69,7 +69,28 @@ batchAddButton.addEventListener('click', () => {
 
   // when we append the fragment it will append the elements inside of it
   batchList.appendChild(fragment);
+
+  // the HTMLCollection will change, but the NodeList will not
+  console.log(liNodeList, liHTMLCollection);
 });
 
 // remove our productList
 productList.remove();
+
+// Array-like Objects: NodeList and HTMLCollection
+let liNodeList = document.querySelectorAll('li');
+let liHTMLCollection = document.getElementsByTagName('li');
+
+// they start off the same...
+console.log(liNodeList, liHTMLCollection);
+
+// NodeList added benefit: It has the .forEach() array method
+liNodeList.forEach((item) => console.log(item))
+
+// Special trick: Turn a NodeList or an HTMLCollection into a standard regular array
+let liArray = Array.from(liHTMLCollection);
+
+// Allows you to use all the array methods!
+liArray.push(document.createElement('li'));
+
+console.log(liArray);
