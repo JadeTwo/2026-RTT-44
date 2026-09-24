@@ -1,0 +1,59 @@
+#theme-toggle-container {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#theme-toggle-container h3 {
+    margin-top: 0;
+}
+
+#theme-toggle-button {
+    padding: 10px 15px;
+    border: 1px solid #007bff;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#theme-toggle-button:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Global theme styles (applied to body/container in toggle) */
+#container.light {
+    background-color: #ffffff;
+    color: #333333;
+}
+#container.light #theme-toggle-container {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+}
+#container.light #theme-toggle-button {
+    /* Example: Adjust button for light theme if needed */
+}
+
+#container.dark {
+    background-color: #1a1a1a; /* Darker background for the whole page */
+    color: #e0e0e0; /* Lighter text for the whole page */
+}
+#container.dark #theme-toggle-container {
+    background-color: #2c2c2c; /* Dark background for component container */
+    border-color: #444444; /* Darker border */
+    color: #e0e0e0; /* Light text within component */
+}
+#container.dark #theme-toggle-button {
+    background-color: #0056b3; /* Example: Darker blue for dark mode */
+    border-color: #004085;
+    color: #ffffff;
+}
+#container.dark #theme-toggle-button:hover {
+    background-color: #003366;
+    border-color: #00274d;
+}

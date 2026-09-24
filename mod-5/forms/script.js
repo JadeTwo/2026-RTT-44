@@ -1,53 +1,52 @@
 const simpleForm = document.querySelector('#simple-form');
 const longForm = document.querySelector('#long-form');
 
+simpleForm.addEventListener('input', function(event) {
+    const input = event.target;
+    sessionStorage.setItem('name', input.value);
+})
+
+window.addEventListener('load', function() {
+    const nameInput = document.querySelector('#name');
+    // update the input for name to the current sessionStorage value for name
+    nameInput.value = sessionStorage.getItem('name');
+})
+
 simpleForm.addEventListener('submit', function (event) {
     event.preventDefault();
+    alert('testing');
 })
 
 longForm.addEventListener('submit', function (event) {
     event.preventDefault();
+    alert('form submitted');
 })
 
-longForm.addEventListener('change', function (event) {
+longForm.addEventListener('input', function (event) {
+    // rename the target element to "input"
     let input = event.target;
-    // console.log('is the input valid: ', input.checkValidity());
-    // input.reportValidity();
+    
+    // check the validity of the input using the "Validity State Object"
+    console.log(input.validity);
 
-    // check if the input passes validation
-    // if (!input.validity.valid) {
-    //   alert('Please enter your name.');
-    //   input.focus();
-    //   return; // Stop further processing if invalid
-    // }
+    // change the validation message (error message)
+    input.setCustomValidity("Uh oh...");
 
-    // // turns the form element into a form object
-    // const data = new FormData(longForm);
+    const span = document.getElementById("customEmailError");
+    span.textContent = input.validationMessage
 
-    // // access the input value using the name attribute
-    // console.log(data.get('username'));
-    // console.log(data.get('password'));
-    // // reset the form 
-    // longForm.reset();
+    // find out what the message is
+    console.log(input.validationMessage)
 
-    // check to see if it is a email input
-    if (input.id === "email") {
-        console.log('email input found.')
-        // check if the email input matches the correct format
-        if (input.validity.typeMismatch) {
-            input.setCustomValidity('Something went wrong.');
-            console.log('testing');
-        } else if (input.validity.valueMissing) {
-            input.setCustomValidity('We need your email address to contact you!');
-        }
-        else {
-            input.setCustomValidity(''); // Clear custom error if valid
-        }
+    // clear your message and custom error
+    // input.setCustomValidity("");
 
-        // make the built-in HTML tooltip/bubble for the error appear
-        input.reportValidity();
+    // check validity of this input
+    console.log(input.checkValidity());
 
-        // Display the custom message or clear it
-        // customEmailError.textContent = input.validationMessage;
+    // checkValidity returns a boolean (true or false)
+    if (input.checkValidity()) {
+        // perform some logic here for when the input is valid
     }
 })
+
