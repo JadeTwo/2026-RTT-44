@@ -30,6 +30,7 @@ function addItem(item) {
     if (!shoppingList.includes(item)) {
         shoppingList.push(item);
     }
+    // an alternative would be to use the filterItems function
 }
 
 // function isItemInArray(item) {
@@ -120,5 +121,17 @@ function renderCart() {
 
 }
 
-// 3. Write another function that removes the last item and updates the displayed list when a “Remove Last Item” button is clicked.
+// 3. Write another function that removes the last item and updates the displayed 
+// list when a “Remove Last Item” button is clicked.
+
+const removeBtn = document.getElementById('remove');
+
+removeBtn.addEventListener('click', function() {
+    // remove the last item (from the array)
+    removeLastItem();
+
+    // update the display (the <ul></ul>)
+    renderCart();
+})
+
 
