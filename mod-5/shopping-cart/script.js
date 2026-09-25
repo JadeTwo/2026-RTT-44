@@ -7,13 +7,6 @@ const removeBtn = document.getElementById('remove');
 // an empty array called shoppingList.
 let shoppingList = [];
 
-
-// a function called removeLastItem that removes the last item from the shoppingList array.
-function removeLastItem() {
-    // remove the last item of the array
-    shoppingList.pop();
-}
-
 // afunction called displayList that logs all items in the shoppingList array to the console.
 function displayList() {
     // log all items
@@ -99,7 +92,7 @@ function handleClick() {
     // create an item object
     const item = {
         name: itemName,
-        price: 5,
+        price: Math.floor(Math.random() * 10) + 1,
         quantity: 1
     };
 
@@ -119,13 +112,49 @@ function handleClick() {
 // make the button clickable
 button.addEventListener('click', handleClick);
 
-// another function that removes the last item and updates the displayed 
-removeBtn.addEventListener('click', function() {
-    // remove the last item (from the array)
-    removeLastItem();
+// use event delegation to handle clicking the "X" button
+ul.addEventListener('click', function(event) {
 
-    // update the display (the <ul></ul>)
-    renderCart();
+    // nested element we clicked on
+    const element = event.target;
+
+    // check to see if we clicked on a button
+    if (element.tagName === 'BUTTON') {
+
+        // access the div (by getting the parent's first child)
+        let div = element.parentElement.firstChild;
+
+        // access the name inside the div
+        let name = div.textContent
+
+        // remove the extra text (so we just have the name)
+        name = name.replace('name: ', '')
+
+        // remove the item based off the name
+        removeItem(name);
+
+        // update the output 
+        renderCart();
+
+    }
 })
 
+function removeItem(name) {
+    
+    // the new shopping list array (minus one item)
+    let filter = []
+
+    for (let item of shoppingList) {
+
+        // check if the current item matches the name of the item we're removing
+        if (item.name === name) {
+            continue;
+        } else {
+            filter.push(item);
+        }
+    }
+
+    // replacing our old list with our new list
+    shoppingList = filter;
+}
 
