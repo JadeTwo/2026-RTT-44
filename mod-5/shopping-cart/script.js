@@ -56,8 +56,12 @@ function filterItems(searchTerm) {
 
     for (let item of shoppingList) {
 
+        // let lowerCaseItem = item.toLowerCase()
+        // let lowerCaseSearchTerm = searchTerm.toLowerCase()
+
         // check if the item contains the searchTerm
         if (item.toLowerCase().includes(searchTerm.toLowerCase())) { 
+        // if (lowerCaseItem.includes(lowerCaseSearchTerm)) {
             filter.push(item);
         }
     }
@@ -65,3 +69,8 @@ function filterItems(searchTerm) {
     return filter;
 }
 
+
+// TASK 3
+
+// 2. Write a JavaScript function that adds items to the array and updates the displayed list dynamically when the button is clicked.
+// 3. Write another function that removes the last item and updates the displayed list when a “Remove Last Item” button is clicked.
