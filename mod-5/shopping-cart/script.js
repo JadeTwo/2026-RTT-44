@@ -68,20 +68,19 @@ function renderCart() {
         const removeBtn = document.createElement('button');
 
         // adding text to our elements here
-        nameDiv.textContent = item.name;
-        priceDiv.textContent = item.price;
+        nameDiv.textContent = `name: ${item.name}`;
+        priceDiv.textContent = `price: $${item.price}`;
+        removeBtn.textContent = 'X';
 
-        // <li>
-        //     <div>apple</div>
-        //     <div>5</div>
-        //     <input type="number" value="1">
-        //     <button>X</button>
-        // </li>
+        // adding some attributes to our elements
+        quantityInput.type = 'number';
+        quantityInput.value = item.quantity;
 
-
-        // // give our list item some text (the item's name)
-        // li.textContent = `${item.name}, ${item.price}, ${item.quantity}`;
-
+        // add these extra elements to the <li></li>
+        li.appendChild(nameDiv);
+        li.appendChild(priceDiv);
+        li.appendChild(quantityInput);
+        li.appendChild(removeBtn);
 
         // add it to the DOM (appending it to the <ul></ul>)
         ul.appendChild(li);

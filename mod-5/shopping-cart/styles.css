@@ -1,0 +1,7 @@
+li > input {
+    width: 30px;
+}
+
+li {
+    list-style: '🛒';
+}
