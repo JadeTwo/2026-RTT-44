@@ -87,7 +87,7 @@ function handleClick() {
     // add the item to the shoppingList array
     addItem(item);
   
-    // create the output based off the array
+    // create the output based off the array 
     renderCart()
    
     // reset the input (so they can type a new item more easily)
