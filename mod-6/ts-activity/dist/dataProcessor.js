@@ -21,6 +21,5 @@ function processData(data) {
 }
 // ES6 Module Syntax
 export { processData };
-
 // CommonJS Syntax (older - default)
 // module.exports = { processData };
