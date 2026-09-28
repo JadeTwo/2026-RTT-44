@@ -61,3 +61,10 @@ Step 9 (OPTIONAL): Change the TypeScript configuration again (to remove extra fi
     "declarationMap": true,
 
 
+
+Step 10 (OPTIONAL): Create a .gitignore (if you are creating a repository)
+
+(write a list of files or folders that you want to ignore)
+
+    node_modules
+    dist
