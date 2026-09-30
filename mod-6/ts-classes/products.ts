@@ -29,7 +29,10 @@ const product2 = new Product("TV", 500, false);
 console.log('end of products.ts')
 
 // wrap all of our exports in an object and export the object
-export { product1, product2, Product };
+export { product1, product2 };
+
+// we can use "export default" only once
+export default Product;
 
 
 

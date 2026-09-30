@@ -1,5 +1,8 @@
 // import our products
-import { product1, product2 as p2, Product } from './products.ts';
+import { product1, product2 as p2 } from './products.ts';
+
+// import the default value
+import Product from './products.ts'
 
 // import everything from products.ts that was exported in an object
 // import * as ProductObject from './products.ts';
