@@ -19,7 +19,8 @@ function processData(data: Data[]): Data[] {
  
   for (let i = 0; i < data.length; i++) {
 
-    let item = data[i];
+    // union (it's either Data or undefined)
+    let item: Data | undefined = data[i];
 
     // type guard (to check is item is undefined)
     if (item === undefined) {
