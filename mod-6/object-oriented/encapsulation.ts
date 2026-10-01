@@ -1,5 +1,8 @@
 class Product {
 
+    // static method (available on the class itself)
+    static taxRate = 0.05;
+
     // access modifiers
     private sku: string; // only accessible within the class
     public name: string; // accessible anywhere
@@ -13,7 +16,7 @@ class Product {
 
     // this is now our price property (accessing product.price calls this method)
     get price(): number {
-        return this._price;
+        return this._price * (Product.taxRate + 1); // accessing the static property taxRate (class-level property)
     }
 
     // this would set the price
@@ -27,6 +30,9 @@ class Product {
         return `${this.name} (SKU: ${this.sku}) costs $${this.price}.`;
     }
 }
+
+// using the static property to access the tax rate (without making any objects)
+console.log('Tax : ' + Product.taxRate)
 
 const product = new Product('038242', 'TV', 500)
 // console.log(product.name); // we can only access the public property name
