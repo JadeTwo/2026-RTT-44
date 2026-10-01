@@ -68,3 +68,11 @@ Step 10 (OPTIONAL): Create a .gitignore (if you are creating a repository)
 
     node_modules
     dist
+
+
+
+Step 11 (OPTIONAL): Change the package.json file (if you are planning on using modules to import and export)
+
+(change the "type" property to module or add it if it's missing)
+
+    "type": "module"
