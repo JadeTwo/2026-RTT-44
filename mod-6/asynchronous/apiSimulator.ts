@@ -6,45 +6,49 @@
 // Chain these Promises together to display product details, reviews, and related products in the console.
 // Critical Thinking: How does chaining Promises help keep the code organized? What challenges might you face when dealing with complex chains of Promises?
 
+interface Product {
+    name: string;
+    price: number;
+}
 
-
-function getProductDetails() {
+function getProductDetails(): Promise<Product> {
     // create a promise to simulate a request for product detauls
-    let fetchDetails = new Promise((resolve) => {
+    return new Promise((resolve) => {
         // use a setTimeout to simulate the waiting period
         setTimeout(() => {
             // we want to send back the data (resolve the promise)
-            let product = { name: 'Headphones', price: 199 };
+            let product: Product = { name: 'Headphones', price: 199 };
             resolve(product);
         }, 2000)
     });
-    return fetchDetails;
 }
 
-function getProductReviews() {
+interface Review {
+    rating: number;
+}
+
+function getProductReviews(): Promise<Review[]> {
     // create a promise to simulate a request for reviews
-    let fetchReviews = new Promise((resolve) => {
+    return new Promise((resolve) => {
         // use a setTimeout to simulate the waiting period
         setTimeout(() => {
             // we want to send back the data (resolve the promise)
-            let reviews = [{ rating: 5 }, { rating: 4 }, { rating: 1 }];
+            let reviews: Review[] = [{ rating: 5 }, { rating: 4 }, { rating: 1 }];
             resolve(reviews);
         }, 250)
     });
-    return fetchReviews;
 }
 
-function getRelatedProducts() { 
+function getRelatedProducts(): Promise<Product[]> { 
     // create a promise to simulate a request for reviews
-    let fetchRelatedProducts = new Promise((resolve) => {
+    return new Promise((resolve) => {
         // use a setTimeout to simulate the waiting period
         setTimeout(() => {
             // we want to send back the data (resolve the promise)
-            let relatedProducts = [{ name: 'AirPods', price: 99 }, { name: 'Mouthpiece', price: 59 }];
+            let relatedProducts: Product[] = [{ name: 'AirPods', price: 99 }, { name: 'Mouthpiece', price: 59 }];
             resolve(relatedProducts);
         }, 250)
     });
-    return fetchRelatedProducts;
 }
 
 
