@@ -1,16 +1,20 @@
 // Asynchronous Code Example with setTimeout
-// console.log("Start");
+console.log("Start");
 
-// setTimeout(() => {
-//   console.log("This happens asynchronously");
-// }, 0);
+// run this callback function after a second
+setTimeout(() => {
+  console.log("This happens asynchronously");
+}, 1000);
 
-// console.log("End");
+// in the meantime, continue running code synchronously as normal
+console.log("End");
 
 
 // PROMISE
 
-// Create a promise here 
+// How to create a promise:
+
+// Use the Promise class 
 const promise = new Promise((resolve, reject) => {
     if (false) {
         // it is either resolved after 250 milliseconds 
@@ -21,10 +25,17 @@ const promise = new Promise((resolve, reject) => {
     }
 })
 
+// the "promise" variable now holds a special object that acts as a placeholder for an incoming value (or data)
+// (it is an object with three states: pending, fulfilled, rejected)
+// the actual value is not available at the moment, so the rest of the code will run synchronously
 
+// How to handle a promise 
+
+// when the promise is fulfilled, the value is ready to be extracted 
+// we can handle the state of our promise changing with the .then() method
 
 promise 
-// Handle the promise if it is resolved
+// Handle the promise if it is resolved (fulfilled)
     .then((value) => {
         console.log(value);
     })
@@ -35,9 +46,3 @@ promise
 
 console.log(promise);
 
-// arrow function 
-const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
- 
-wait(10 * 1000) 
-  .then(() => saySomething("10 seconds"))
-  .catch(failureCallback);
