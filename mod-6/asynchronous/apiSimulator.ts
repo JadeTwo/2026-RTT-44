@@ -67,6 +67,7 @@ getProductDetails()
     .then((relatedProducts) => {
         console.log(relatedProducts);
     })
+    .finally(() => {})
 
 
 // it could be seperate like this...
