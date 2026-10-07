@@ -43,17 +43,17 @@ const fetchUserData = () => {
     });
 };
 
-fetchUserData() // returns a promise
-    .then((data) => {
-        console.log("Fetched user:", data);
-        return "Additional data"; // wraps the value in a promise -> Promise.resolve("Additional data")
-    })
-    .then((extraData) => {
-        console.log("Fetched extra:", extraData);
-    })
-    .catch((error) => {
-        console.error("Error fetching data:", error);
-    });
+// fetchUserData() // returns a promise
+//     .then((data) => {
+//         console.log("Fetched user:", data);
+//         return "Additional data"; // wraps the value in a promise -> Promise.resolve("Additional data")
+//     })
+//     .then((extraData) => {
+//         console.log("Fetched extra:", extraData);
+//     })
+//     .catch((error) => {
+//         console.error("Error fetching data:", error);
+//     });
 
 
 // EXAMPLE 2: Using async/await to handle promises (alternative)
@@ -82,7 +82,7 @@ async function displayData() {
     }
 };
 
-displayData();
+// displayData();
 
 
 // ANOTHER EXAMPLE: With async/await
@@ -102,4 +102,27 @@ const handleData = async () => {
     }
 };
 
-handleData();
+// handleData();
+
+// Promise.resolve().then(() => console.log("One"));
+// console.log("Two");
+
+
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms)); 
+ 
+wait(0).then(() => console.log("Cat")); // This initially gets passed to the "Task Queue"
+ 
+Promise.resolve()
+  .then(() => console.log("Dog")) // This goes to the "Micro-Task Queue" first
+  .then(() => console.log("Cow")); // This goes to the "Micro-Task Queue" second
+ 
+console.log("Bird"); // This goes to the "Call Stack"
+
+// Call Stack > Micro-Task Queue > Task (Callback) Queue (Call Stack has priority over any Queues, and Micro-Task has priority over Task Queue)
+
+// Web API (timer, fetching data)
+
+// Bird
+// Dog
+// Cow
+// Cat
