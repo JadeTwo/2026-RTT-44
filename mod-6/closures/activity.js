@@ -23,6 +23,8 @@ console.log(finalPrice);
 // we can create another inner function here for a fifteen percent
 const fifteenPercentDiscount = applyDiscount(.15)
 
+// BENEFIT: we can use the applyDiscount function to create as many specialized functions as we need
+
 console.log(fifteenPercentDiscount(100))
 
 
