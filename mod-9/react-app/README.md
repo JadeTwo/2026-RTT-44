@@ -1,16 +1,46 @@
-# React + Vite
+# React Setup (with Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+### Step 1: Create the Project
 
-Currently, two official plugins are available:
+In your terminal, run the following command:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm create vite@latest
+```
 
-## React Compiler
+When prompted, select the following options using your arrow keys and **Enter**:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **Project name:** `whatever-my-project-is-called`
+* **Select a framework:** `React`
+* **Select a variant:** `JavaScript`
+* **Which linter to use:** `Oxlint`
+* **Install with npm and start:** `Yes`
 
-## Expanding the Oxlint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+### Step 2: Access the Development Server
+
+Once the project is generated, open your browser and go to:
+
+> **[http://localhost:5173/](http://localhost:5173/)**
+
+* **Stop the server:** Press `Ctrl + C` in your terminal.
+* **Restart the server:** Run `npm run dev`.
+
+---
+
+### Step 3: Clean Up and Create a Simple Component
+
+1. Open the project folder in your code editor.
+2. Clear out all the existing code inside `App.css`, `index.css`, and `App.jsx` *(keep the files, just make them blank)*.
+3. Replace the content of `App.jsx` with the following component:
+
+```jsx
+export default function App() {
+  return (
+    <div>Hello World</div>
+  );
+}
+```
+
+You're ready to go!
