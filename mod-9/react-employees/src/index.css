@@ -6,9 +6,10 @@
   border: 3px solid orange;
 }
 
-#header {
+/* #header {
   border: 3px solid skyblue;
-}
+  text-align: center;
+} */
 
 #search-bar {
   border: 3px solid green;

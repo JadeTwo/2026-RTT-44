@@ -5,7 +5,6 @@ import EmployeeList from "./EmployeeList"
 export default function HomePage() {
     return (
         <section id="homepage">
-            HomePage
             <Header />
             <SearchBar />
             <EmployeeList />

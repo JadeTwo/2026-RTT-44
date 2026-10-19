@@ -1,14 +1,14 @@
-export default function EmployeeListItem(props) {
+export default function EmployeeListItem({ name, title }) {
 
-    console.log('props: ', props);
+    console.log('props: ', name, title);
 
     return (
         <li className="employee-list-item">
             <div>
-                {props.name}
+                {name}
             </div>
             <div>
-                {props.title}
+                {title}
             </div>
         </li>
     )
