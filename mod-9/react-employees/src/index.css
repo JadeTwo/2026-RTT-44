@@ -1,0 +1,23 @@
+#app { 
+  border: 3px solid black;
+}
+
+#homepage {
+  border: 3px solid orange;
+}
+
+#header {
+  border: 3px solid skyblue;
+}
+
+#search-bar {
+  border: 3px solid green;
+}
+
+#employee-list {
+  border: 3px solid purple;
+}
+
+.employee-list-item {
+  border: 3px solid red;
+}
