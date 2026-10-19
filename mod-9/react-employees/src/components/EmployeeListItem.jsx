@@ -1,7 +1,16 @@
-export default function EmployeeListItem() {
+export default function EmployeeListItem(props) {
+
+    console.log('props: ', props);
+
     return (
         <li className="employee-list-item">
-            Employee List Item
+            <div>
+                {props.name}
+            </div>
+            <div>
+                {props.title}
+            </div>
         </li>
     )
 }
+
