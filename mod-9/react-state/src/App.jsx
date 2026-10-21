@@ -18,13 +18,17 @@ export default function App() {
   //   useState() // DON'T do this (this is inside a nested scope)
   // }
 
+  // this code will run any time the App component renders
+  // console.log('Hello (from App)!')
+
   function increment() {
     // update the state by using the setCount 
     setCount(count + 1) // <-- the argument is the new value
   }
 
   function decrement() {
-    setCount(count - 1);
+    // setCount(count - 1);
+    // count-- // DON'T do this (this will make the state and the UI out of sync)
   }
 
   return (
@@ -33,7 +37,7 @@ export default function App() {
       <button onClick={increment}>+</button>
       <button onClick={decrement}>-</button>
       <button onClick={() => {
-        // pass updater function as the argument
+        // pass updater function (callback) as the argument
         setCount((prevCount) => prevCount + 5);
       }}>Add 5</button>
     </div>
