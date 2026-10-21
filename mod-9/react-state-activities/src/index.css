@@ -1,0 +1,12 @@
+/* initial state */
+p {
+    transition-property: opacity;
+    transition-duration: 1s;
+    opacity: 0;
+}
+
+/* final state */
+.fade {
+    background-color: aqua;
+    opacity: 1;
+}
