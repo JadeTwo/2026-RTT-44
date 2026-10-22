@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ColorPicker from "./components/ColorPicker";
 
 export default function App() {
 
@@ -21,6 +22,10 @@ export default function App() {
   return (
     <div>
 
+      <ColorPicker />
+
+      {/* 
+      
       <button onClick={handleClick}>Click Me</button>
 
       <form onSubmit={handleFormSubmit}>
@@ -32,7 +37,9 @@ export default function App() {
         <button>Submit</button>
       </form>
 
-      Validation: {inputValue.length >= 4 ? 'Passed' : 'Needs at least 4 characters'}
+      Validation: {inputValue.length >= 4 ? 'Passed' : 'Needs at least 4 characters'} 
+      
+      */}
 
     </div>
   )

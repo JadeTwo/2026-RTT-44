@@ -16,9 +16,16 @@ export default function ColorPicker() {
         setColor(newColor);
     }
 
+    const style = {
+        backgroundColor: color,
+        border: '1px solid black'
+    }
+
     return (
         <div>
+            <h1>Color Picker</h1>
             <ColorInput onColorChange={handleColorChange} />
+            <div style={style}>Current color: {color}</div>
         </div>
     )
 }
