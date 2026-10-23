@@ -17,11 +17,27 @@ function SingleStateForm() {
  
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target; // Destructure name and value
- 
-    setFormData(prevFormData => ({
-      ...prevFormData, // Spread existing state
-      [name]: value     // Update changed field using computed property name
-    }));
+
+    // this does not work
+    // formData[name] = value
+    // setFormData(formData)
+
+    // this would work
+    // const newFormData = { ...formData }
+    // newFormData[name] = value
+    // setFormData(newFormData)
+
+    // Option 1: Pass the new value (new object)
+    setFormData({ 
+      ...formData, 
+      [name]: value 
+    })
+
+    // // Option 2: Using the updater (callback) function
+    // setFormData(prevFormData => ({
+    //   ...prevFormData, // Spread existing state
+    //   [name]: value     // Update changed field using computed property name
+    // }));
   };
  
   const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
