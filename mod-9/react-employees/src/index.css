@@ -21,4 +21,13 @@
 
 .employee-list-item {
   border: 3px solid red;
+  display: flex;
+  align-items: center;
 }
+
+img {
+  height: 100px;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+

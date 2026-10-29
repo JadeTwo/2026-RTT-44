@@ -1,14 +1,15 @@
-export default function EmployeeListItem({ name, title }) {
-
-    console.log('props: ', name, title);
+export default function EmployeeListItem({ name, title, image }) {
 
     return (
         <li className="employee-list-item">
+            <img src={image} alt={name} />
             <div>
-                {name}
-            </div>
-            <div>
-                {title}
+                <div>
+                    {name}
+                </div>
+                <div>
+                    {title}
+                </div>
             </div>
         </li>
     )
