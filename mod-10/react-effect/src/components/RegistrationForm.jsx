@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 
 export default function RegistrationForm() {
@@ -10,6 +10,12 @@ export default function RegistrationForm() {
         confirmPassword: '',
         newsletter: false
     });
+
+    let test = 123
+
+    useEffect(() => {
+        console.log(form, test);
+    }, [])
 
     function handleChange(e) {
 
