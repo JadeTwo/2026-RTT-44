@@ -1,0 +1,9 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+article {
+  background-color: blue;
+  color: white;
+}
