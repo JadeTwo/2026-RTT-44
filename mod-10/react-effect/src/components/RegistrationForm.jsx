@@ -1,27 +1,30 @@
 import { useEffect, useState } from "react"
 
+const initialForm = {
+    username: '',
+    password: '',
+    email: '',
+    confirmPassword: '',
+    newsletter: false
+}
 
 export default function RegistrationForm() {
 
-    const [form, setForm] = useState({ 
-        username: '',
-        password: '',
-        email: '',
-        confirmPassword: '',
-        newsletter: false
-    });
+    const [form, setForm] = useState(initialForm);
 
-    let test = 123
+    // problematic object
+    const options = { id: 1, details: true };
 
     useEffect(() => {
-        console.log(form, test);
-    }, [])
+        console.log('Effect runs because options object changed reference');
+        setForm({ ...initialForm }) // this will cause the component to re-render
+    }, []); // Using 'options' directly would cause the effect to run on every render.
 
     function handleChange(e) {
 
         let { name, value, checked } = e.target
         // pass a new object (because has a new reference)
-        
+
         console.log(name, value, checked);
 
         // change the value if it's the checkbox input
@@ -38,19 +41,19 @@ export default function RegistrationForm() {
     return (
         <form onSubmit={handleSubmit}>
             <label htmlFor="username">Username:</label>
-            <input 
-                type="text" 
-                id="username" 
+            <input
+                type="text"
+                id="username"
                 name="username"
                 value={form.username}
                 onChange={handleChange}
                 required
             />
-            
+
             <label htmlFor="password">Password:</label>
-            <input 
-                type="password" 
-                id="password" 
+            <input
+                type="password"
+                id="password"
                 name="password"
                 value={form.password}
                 onChange={handleChange}
@@ -58,9 +61,9 @@ export default function RegistrationForm() {
             />
 
             <label htmlFor="confirm-password">Confirm Password:</label>
-            <input 
-                type="password" 
-                id="confirm-password" 
+            <input
+                type="password"
+                id="confirm-password"
                 name="confirmPassword"
                 value={form.confirmPassword}
                 onChange={handleChange}
@@ -70,21 +73,21 @@ export default function RegistrationForm() {
             {form.password !== form.confirmPassword && <p>Passwords don't match</p>}
 
             <label htmlFor="email">Email:</label>
-            <input 
-                type="email" 
-                id="email" 
+            <input
+                type="email"
+                id="email"
                 name="email"
-                value={form.email} 
+                value={form.email}
                 onChange={handleChange}
             />
 
-        {/* 
+            {/* 
             if the email field contains text and includes an ”@” symbol
             it should be enabled. Otherwise, disable.
         */}
-            <input 
-                type="checkbox" 
-                id="newsletter" 
+            <input
+                type="checkbox"
+                id="newsletter"
                 name="newsletter"
                 checked={form.newsletter}
                 onChange={handleChange}
