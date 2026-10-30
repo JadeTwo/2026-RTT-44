@@ -45,10 +45,11 @@ export default function HomePage() {
 
         // if employees is an empty array and not null... get data
         if (employees !== null && employees.length === 0) {
+    
             console.log('fetching employee data...')
             getEmployeeData()
         }
-         
+        
     }, [employees]); // employees dependency will change if there is local storage
 
     return (
