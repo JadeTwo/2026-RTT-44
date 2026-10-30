@@ -40,16 +40,16 @@ export default function HomePage() {
         }
     }
 
-    console.log(employees);
-
     useEffect(() => {
         // call our getEmployeeData function when component mounts
-       if (!employees) {
-        console.log('fetching...')
-         getEmployeeData()
-       }
-       console.log('employees', employees)
-    }, []);
+
+        // if employees is an empty array and not null... get data
+        if (employees !== null && employees.length === 0) {
+            console.log('fetching employee data...')
+            getEmployeeData()
+        }
+         
+    }, [employees]); // employees dependency will change if there is local storage
 
     return (
         <section id="homepage">
@@ -57,7 +57,7 @@ export default function HomePage() {
             <SearchBar />
             {/* send that employee data from our state to our child
              component EmployeeList as a prop so that it can render the list */}
-            <EmployeeList employees={employees} />
+            {employees && <EmployeeList employees={employees} />}
         </section>
     )
 }
