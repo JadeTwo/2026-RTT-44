@@ -1,16 +1,15 @@
-# React + Vite
+Task: Create a custom Hook named useLocalStorage that allows a component to synchronize a piece of state with the browser’s localStorage.
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Requirements:
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- The Hook should accept two arguments: key (string, for the localStorage key) and initialValue (the initial value if nothing is in localStorage for that key).
+- It should return an array similar to useState: [storedValue, setStoredValue].
+When the Hook is first used:
+- It should try to retrieve the value from localStorage using the provided key.
+- If a value exists in localStorage, it should be parsed (assume JSON) and used as the initial state.
+- If no value exists or if parsing fails, initialValue should be used.
+- The setStoredValue function should:
+- Update the state in the component.
+- Update the value in localStorage (serializing it to JSON).
+- Consider how this Hook would behave if used by multiple components with the same key (optional, for advanced thought).
+- Provide an example component that uses useLocalStorage to store and retrieve a user’s preference (e.g., a theme name or a simple counter).

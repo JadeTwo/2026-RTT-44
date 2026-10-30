@@ -2,10 +2,12 @@ import Header from "./Header"
 import SearchBar from "./SearchBar"
 import EmployeeList from "./EmployeeList"
 import { useEffect, useState } from "react"
+import useLocalStorage from "../hooks/useLocalStorage"
 
 export default function HomePage() {
 
-    const [employees, setEmployees] = useState([]);
+    // gives us the value and the setStoredValue 
+    const [employees, setStoredValue] = useLocalStorage('employees', []);
 
     async function getEmployeeData() {
         try {
@@ -30,7 +32,7 @@ export default function HomePage() {
                 }
             })
             // save that data in our state 
-            setEmployees(employeeData);
+            setStoredValue(employeeData);
 
 
         } catch (err) {
@@ -42,7 +44,11 @@ export default function HomePage() {
 
     useEffect(() => {
         // call our getEmployeeData function when component mounts
-        getEmployeeData()
+       if (!employees) {
+        console.log('fetching...')
+         getEmployeeData()
+       }
+       console.log('employees', employees)
     }, []);
 
     return (

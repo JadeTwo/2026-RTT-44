@@ -6,6 +6,7 @@ export default function EmployeeList({ employees }) {
     // we loop through our array of employee objects
     // and turn each one into a EmployeeListItem component
     // and end up with an array of components
+
     const components = employees.map((employee) => 
         <EmployeeListItem 
             key={employee.id}
