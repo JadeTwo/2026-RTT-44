@@ -1,27 +1,26 @@
-// X Create a ThemeContext that will provide the current theme ('light' or 'dark') and a function to toggle the theme.
-// X Create a top-level App component that acts as the ThemeProvider and manages the theme state.
-// X Create a Navbar component that consumes the theme context to adjust its styling.
-// X Create a Content component that also consumes the theme context for its styling.
-// X Include a button (perhaps in Navbar or App) to toggle the theme.
+// X Define ThemeContext (theme, toggleTheme) and UserContext (currentUser, login, logout).
+// X Create a top-level provider component (e.g., AppProviders) that provides both contexts.
+// X Create a Header component that consumes UserContext to display user info/login button.
+// X Create a Sidebar component that consumes ThemeContext to style itself.
+// X Create a MainContent component that consumes both ThemeContext (for styling) and UserContext (to display user-specific content).
+// Demonstrate that updating the theme does not cause the Header (if it only uses UserContext) to re-render unnecessarily (this might involve using React.memo and console logging in component renders for verification).
 
-import { useState } from "react";
-import { ThemeContext } from "./context/themeContext"
 import Navbar from "./components/Navbar";
 import Content from "./components/Content";
+import Header from "./components/Header";
+import MainContent from "./components/MainContent";
+import Sidebar from "./components/Sidebar";
 
 export default function App() {
 
-  const [theme, setTheme] = useState('dark');
-
-  function toggleTheme() {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  }
-
   // Step 2: Provide the context
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}> 
+    <>
+      <Header />
       <Navbar />
       <Content />
-    </ThemeContext.Provider>
+      <MainContent />
+      <Sidebar />
+   </>
   )
 }
