@@ -1,0 +1,19 @@
+.nav-dark {
+  background-color: black;
+  color: white;
+}
+
+.nav-light {
+  background-color: white;
+  color: black;
+}
+
+.content-dark {
+  background-color: black;
+  color: white;
+}
+
+.content-light {
+  background-color: white;
+  color: black;
+}
