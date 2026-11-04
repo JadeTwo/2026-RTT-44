@@ -1,6 +1,6 @@
-import Header from "./Header"
-import SearchBar from "./SearchBar"
-import EmployeeList from "./EmployeeList"
+import Header from "../components/Header"
+import SearchBar from "../components/SearchBar"
+import EmployeeList from "../components/EmployeeList"
 import { useEffect, useState } from "react"
 import useLocalStorage from "../hooks/useLocalStorage"
 
@@ -54,7 +54,7 @@ export default function HomePage() {
 
     return (
         <section id="homepage">
-            <Header />
+            <Header title='Employee Directory' />
             <SearchBar />
             {/* send that employee data from our state to our child
              component EmployeeList as a prop so that it can render the list */}

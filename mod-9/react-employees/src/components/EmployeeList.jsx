@@ -10,6 +10,7 @@ export default function EmployeeList({ employees }) {
     const components = employees.map((employee) => 
         <EmployeeListItem 
             key={employee.id}
+            id={employee.id}
             name={employee.name} 
             title={employee.title} 
             image={employee.image}

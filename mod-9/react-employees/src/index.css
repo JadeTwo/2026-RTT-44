@@ -31,3 +31,46 @@ img {
   border-radius: 50%;
 }
 
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile > img {
+  height: 150px;
+}
+
+.detail {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.detail :last-child {
+  color: grey;
+  opacity: .6;
+} 
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+header > div {
+  position: absolute;
+  top:0;
+  left: 0;
+  font-size: 25pt;
+  color: skyblue;
+  cursor: pointer;
+}
+
+header > div:hover {
+  color: black;
+}
+
+h1 {
+  margin: 0;
+}

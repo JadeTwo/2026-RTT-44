@@ -1,17 +1,21 @@
-export default function EmployeeListItem({ name, title, image }) {
+import { Link } from 'react-router-dom'
+
+export default function EmployeeListItem({ name, title, image, id }) {
 
     return (
-        <li className="employee-list-item">
-            <img src={image} alt={name} />
-            <div>
+        <Link to={"/employee/" + Number(id)}>
+            <li className="employee-list-item">
+                <img src={image} alt={name} />
                 <div>
-                    {name}
+                    <div>
+                        {name}
+                    </div>
+                    <div>
+                        {title}
+                    </div>
                 </div>
-                <div>
-                    {title}
-                </div>
-            </div>
-        </li>
+            </li>
+        </Link>
     )
 }
 
