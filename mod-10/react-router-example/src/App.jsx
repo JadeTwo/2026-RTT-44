@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage'
 import ContactPage from './pages/ContactPage'
 import AboutPage from './pages/AboutPage'
 import NotFoundPage from './pages/NotFoundPage'
+import ProfilePage from './pages/ProfilePage'
 
 import Navbar from './components/Navbar';
 
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="*" element={<NotFoundPage />} />
+        <Route path="/profile/:id" element={<ProfilePage />} />
       </Routes>
     </div>
   )
