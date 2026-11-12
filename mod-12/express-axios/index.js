@@ -48,9 +48,10 @@ app.post("/posts", async (req, res) => {
         const newData = req.body;
         // Example of a POST request with axios
         const response = await axios.post('https://jsonplaceholder.typicode.com/posts', newData);
-        res.json(response.data);
+        res.status(201).json(response.data);
     } catch(e) {
-        console.log(e);
+        console.log(e.message);
+        res.status(500).json({ error: 'Failed to create post' })
     }
 });
 
