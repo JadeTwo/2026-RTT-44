@@ -1,3 +1,6 @@
+// sets up our environment variables 
+import 'dotenv/config'
+
 import express from 'express';
 
 import postRoutes from './routes/postRoutes.js';
@@ -5,7 +8,8 @@ import userRoutes from './routes/userRoutes.js';
 
 const app = express();
 
-const port = 3000;
+// use the environment variable OR default to 5000
+const port = process.env.PORT || 5000;
 
 // middleware (important for POST, PUT, and PATCH requests)
 app.use(express.json())
