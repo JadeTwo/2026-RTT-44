@@ -11,8 +11,8 @@ const port = 3000;
 app.use(express.json())
 
 // use our post routes like middleware
-app.use(postRoutes);
-app.use(userRoutes);
+app.use("/api/posts", postRoutes);  //   /api/posts
+app.use("/api/users", userRoutes); //    /api/users
 
 app.get("/", (req, res) => {
     res.send("Hello World!")

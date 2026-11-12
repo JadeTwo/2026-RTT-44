@@ -4,7 +4,7 @@ import { apiClient } from '../api/apiClient.js';
 
 const router = express.Router();
 
-router.get("/users", async (req, res) => {
+router.get("/", async (req, res) => {
     try {
         // const response = await axios.get('https://jsonplaceholder.typicode.com/users');
         const response = await apiClient.get("/users");

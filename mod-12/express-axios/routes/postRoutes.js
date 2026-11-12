@@ -5,7 +5,8 @@ import { apiClient } from '../api/apiClient.js';
 // create the router which will take the place of the express app
 const router = express.Router();
 
-router.post("/posts", async (req, res) => {
+// localhost:3000/api/posts
+router.post("/", async (req, res) => {
     try {
         // data for this post request
         const newData = req.body;
@@ -18,6 +19,9 @@ router.post("/posts", async (req, res) => {
         res.status(500).json({ error: 'Failed to create post' })
     }
 });
+
+// router.get("/")
+// router.put("/:id")
 
 // we can use it in index.js (or server.js)
 export default router;
