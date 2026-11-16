@@ -13,13 +13,14 @@ async function init() {
     // create a document (temporary - in memory)
     const newUser = new User({
         email: "bob@gmail.com",
-        username: "Bob",
+        username: "Billy",
         age: 50
     })
     // save that document to the database (permanently)
     await newUser.save();
 }
 
+// connect to database
 mongoose.connect(uri)
     .then(() => {
         console.log('Successfully connected to MongoDB!')
@@ -31,8 +32,12 @@ const app = express();
 
 const port = 3000;
 
-app.get('/', (req, res) => {
-    res.send()
+// find our documents and send them back
+app.get('/', async (req, res) => {
+    // use the model to interact with the database (find documents)
+    const result = await User.find({ username: "Bob" });
+    console.log(result);
+    res.json(result);
 })
 
 app.listen(port, () => {

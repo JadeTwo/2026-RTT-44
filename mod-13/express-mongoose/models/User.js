@@ -7,7 +7,11 @@ const { Schema } = mongoose
 // to create a user schema 
 const userSchema = new Schema({
     email: String,
-    username: String,
+    username: { 
+        type: String,
+        unique: true,
+        required: true
+    },
     age: Number
 })
 
