@@ -8,7 +8,7 @@ const { Schema } = mongoose
 const userSchema = new Schema({
     email: String,
     username: String,
-    password: String
+    age: Number
 })
 
 // generate the model
