@@ -6,6 +6,9 @@ import mongoose from 'mongoose';
 
 import express from 'express';
 
+// bring in our model
+import Book from './models/Book.js';
+
 // establish a connection to our db
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('Connected to MongoDB!'))
