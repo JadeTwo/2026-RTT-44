@@ -1,4 +1,20 @@
-import express from 'express'
+// configure our environment variables 
+import 'dotenv/config';
+
+// bring in mongoose
+import mongoose from 'mongoose';
+
+import express from 'express';
+
+// establish a connection to our db
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log('Connected to MongoDB!'))
+    .catch((e) => console.log(e));
+
+
+// setting dns so node doesn't yell at me
+// import dns from 'node:dns';
+// dns.setServers(['1.1.1.1', '8.8.8.8']);
 
 const app = express();
 
