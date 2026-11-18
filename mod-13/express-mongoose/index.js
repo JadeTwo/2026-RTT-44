@@ -8,6 +8,8 @@ dns.setServers(['1.1.1.1', '8.8.8.8']);
 import express from 'express';
 import mongoose from 'mongoose';
 
+import productRouter from './routes/products.js';
+
 // bring in our model (a class)
 import User from './models/User.js';
 
@@ -56,6 +58,10 @@ const port = 3000;
 // to req.body and we can use it with CRUD operations!
 app.use(express.json())
 
+
+// Add the Product routes to the current app
+app.use("/products", productRouter)
+
 // find our documents (That match the request object) and send them back
 app.get('/', async (req, res) => {
     // adding additional code using Query Parameters
@@ -89,10 +95,21 @@ app.get('/', async (req, res) => {
 })
 
 // A request to find ALL of our users on the Database
+
+// Adding additional information to add Pagination to the Get All Users request!
 app.get("/allUsers", async (req, res) =>{
+    // Send "skip" and "limit" as optional query params
+
+    // declaring a variable skip.
+    // if req.query.skip exists... save it in skip
+    // otherwise, save 0 in skip
+    const skip = req.query.skip || 0
+
+    // same deal for Limit
+    const limit = req.query.limit || 3
     // We find EVERY document that matches the query object:
     // Which, with an empty query object, is Every document
-    const result = await User.find({});
+    const result = await User.find({}).skip(skip).limit(limit);
     // Sending back all users (in an Array)
     res.json(result)
 })
@@ -148,6 +165,37 @@ app.post("/", async (req, res) =>{
 
     // And we will send back the Newly Created document to the user.
     res.json(newDoc)
+})
+
+
+// =============== Module 5! Adding more Complex Queries! ===============
+
+// We are trying to find all users greater than the age we put in the URL
+app.get("/minAge/:age", async (req, res) =>{
+    // res.send("We have connected to this MinAge endpoint!")
+    // $gt means that we will find ALL values Greater Than the one listed!
+    // const response = await User.find({age: { $gt: req.params.age}})
+    
+    // But now, we want to return Less information.
+    // Maybe, all they want is the Username, and the Age.
+    // User.find({query_object}, {projection_object})
+    
+    // Explicitly telling the object what TO include: 1
+    // const response = await User.find({age: { $gt: req.params.age}}, {username: 1, age: 1})
+    
+    // Explicitly telling the object what NOT to include: 0
+    // const response = await User.find({age: { $gt: req.params.age}}, {email: 0, _id: 0})
+
+    // You cannot mix and match 0 and 1, it will not work properly
+    // Except for _id. There is always an exception.
+
+    // ===== Sorting! =====
+    if(req.query.sort){
+        const response = await User.find({age: { $gt: req.params.age}}, {username: 1, age: 1, _id: 0}).sort({age: -1})
+        return res.json(response)
+    }
+    const response = await User.find({age: { $gt: req.params.age}}, {username: 1, age: 1, _id: 0})
+    res.json(response)
 })
 
 app.listen(port, () => {
