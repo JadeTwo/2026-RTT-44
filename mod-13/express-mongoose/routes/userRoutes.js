@@ -3,6 +3,8 @@ import User from "../models/User.js"
 
 const routes = Router()
 
+// http://localhost:port/api/users
+
 /*
     ========== Get Routes ==========
 */

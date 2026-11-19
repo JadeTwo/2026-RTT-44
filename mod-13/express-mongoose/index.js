@@ -62,10 +62,10 @@ const port = 3000;
 app.use(express.json())
 
 // Adding the User routes to the app, so I can move the logic over
-app.use("/users", userRouter)
+app.use("/api/users", userRouter)
 
 // Add the Product routes to the current app
-app.use("/products", productRouter)
+app.use("/api/products", productRouter)
 
 
 app.listen(port, () => {
