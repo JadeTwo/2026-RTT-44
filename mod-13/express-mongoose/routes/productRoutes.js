@@ -1,9 +1,9 @@
 import { Router } from "express";
 import Product from "../models/Product.js";
 
-const productRouter = Router();
+const routes = Router();
 
-productRouter.get("/", async (req, res) => {
+routes.get("/", async (req, res) => {
   const page = 1;
   const limit = 5;
   try{
@@ -23,9 +23,9 @@ productRouter.get("/", async (req, res) => {
     }
 });
 
-productRouter.post("/", async (req, res) => {
+routes.post("/", async (req, res) => {
   const response = await Product.create(req.body);
   res.send(response);
 });
 
-export default productRouter;
+export default routes;
