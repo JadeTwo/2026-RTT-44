@@ -37,7 +37,7 @@ app.post("/api/users", async (req, res) =>{
     // NOT going to use req.query
     try{
         const response = await User.create(req.body)
-        res.json(response)
+        res.status(201).json(response)
     }
     catch (err) {
         res.status(500).send("Something went wrong: "+err.message)
