@@ -44,6 +44,31 @@ app.post("/api/users", async (req, res) =>{
     }
 })
 
+app.post("/api/users/login", async (req, res) =>{
+    // Example usage in a login route
+    try{
+        if(!req.body.email || !req.body.password){
+            throw new Error("Incomplete Data from request.")
+        }
+        const user = await User.findOne({ email: req.body.email });
+        
+        if (!user) {
+            return res.status(400).json({ message: "Incorrect email or password" });
+        }
+        
+        const correctPw = await user.isCorrectPassword(req.body.password);
+        
+        if (!correctPw) {
+            return res.status(400).json({ message: "Incorrect email or password" });
+        }
+        res.send(`You have logged in successfully. Welcome ${user.username}!`)
+    }
+    catch(err){
+        res.status(500).send("Error: "+ err.message)
+    }
+// If both are true, the user is authenticated!
+})
+
 app.listen(PORT, () =>{
     console.log("Server running at http://localhost:"+PORT)
 })
