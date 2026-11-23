@@ -13,7 +13,7 @@ dns.setServers(["1.1.1.1", "8.8.8.8"]);
 const app = express();
 
 // bring in our auth middleware
-import { authMiddleware } from "./utils/auth.js";
+import { authMiddleware, adminOnly } from "./utils/auth.js";
 
 app.use(express.json());
 
@@ -75,6 +75,7 @@ app.post("/api/users/login", async (req, res) => {
       _id: user._id,
       username: user.username,
       email: user.email,
+      role: user.role
     };
 
     // jwt.sign is what we use to CREATE / SIGN the token for the user!
@@ -103,8 +104,21 @@ app.get("/api/profile", authMiddleware, async (req, res) => {
 
   console.log(user);
 
-
   res.status(200).json(user);
+})
+
+// protected admin route (for deleting user account)
+app.delete('/api/users/:id', authMiddleware, adminOnly, async (req, res) => {
+
+  try {
+    // remove the user
+    await User.findByIdAndDelete(req.params.id)
+
+    res.status(200).json({ message: "User account deleted" })
+    
+  } catch(err) {
+    res.status(400).json({ error: err.message })
+  }
 })
 
 app.listen(PORT, () => {

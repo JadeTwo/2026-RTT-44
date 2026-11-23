@@ -17,7 +17,7 @@ export function authMiddleware(req, res, next) {
         // This can also be done in one line:
         // token = token.split(" ").pop().trim()
     }
-    
+
     if (!token) {
         // ending the request-response cycle 
         return res.status(401).json({ message: "No token found!" });
@@ -37,3 +37,14 @@ export function authMiddleware(req, res, next) {
         return res.status(401).json({ message: "Invalid token!" });
     }
 }
+
+// middleware to confirm if a user is an admin
+export function adminOnly(req, res, next) {
+  if (req.user && req.user.role === 'admin') {
+    next(); // User is an admin, proceed
+  } else {
+    // end the request-response cycle
+    res.status(403).json({ message: 'Access denied. Admins only.' });
+  }
+}
+ 

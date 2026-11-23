@@ -19,6 +19,12 @@ const userSchema = new Schema({
     required: true,
     minlength: 8,
   },
+  // adding a field for user roles (authorization)
+  role: {
+    type: String,
+    enum: ['user', 'admin'],
+    default: 'user'
+  }
 });
 
 // Set up pre-save middleware to create password
