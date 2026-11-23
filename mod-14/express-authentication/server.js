@@ -1,9 +1,11 @@
 //Configure our .env file
 import "dotenv/config";
+import "./config/passport.js"
 import express from "express";
 import mongoose from "mongoose";
 import User from "./models/User.js";
 import jwt from "jsonwebtoken";
+import passport from "passport"
 
 // Windows code snippet so we can connect to MongoDB...
 import dns from "node:dns";
@@ -120,6 +122,34 @@ app.delete('/api/users/:id', authMiddleware, adminOnly, async (req, res) => {
     res.status(400).json({ error: err.message })
   }
 })
+
+// Route to start the OAuth flow
+// When a user visits this URL, they will be redirected to GitHub to log in.
+app.get(
+  '/api/users/auth/github',
+  // this is using Passport to request from Github the Scope of just the emails
+  passport.authenticate('github', { scope: ['user:email'] }) // Request email scope
+);
+
+app.get(
+  '/api/users/auth/github/callback',
+  // Make sure that we are who we say we are using passport.authenticate
+  // as the middleware to do that
+  passport.authenticate('github', {
+    failureRedirect: '/login', // Where to redirect if user denies
+    session: false // We are using tokens, not sessions
+  }),
+  (req, res) => {
+    // console.log(req.user)
+    // At this point, `req.user` is the user profile returned from the verify callback.
+    // We can now issue our own JWT to the user.
+    // const token = signToken(req.user);
+    // Redirect the user to the frontend with the token, or send it in the response
+    // res.redirect(`http://localhost:3000?token=${token}`);
+
+    res.json(req.user)
+  }
+);
 
 app.listen(PORT, () => {
   console.log("Server running at http://localhost:" + PORT);

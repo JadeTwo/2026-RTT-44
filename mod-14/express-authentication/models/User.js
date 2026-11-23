@@ -14,9 +14,18 @@ const userSchema = new Schema({
     unique: true,
     match: [/.+@.+\..+/, "Must match an email address!"],
   },
+  // going to need a githubId field to have this work
+  githubId: {
+    type: String,
+    unique: true,
+  },
   password: {
     type: String,
-    required: true,
+    required: function() {
+      return !this.githubId // What does THIS do?
+      // IF we do not have a githubId, then this field is required
+      // if we DO have a githubId, we do not need this field.
+    },
     minlength: 8,
   },
   // adding a field for user roles (authorization)
@@ -33,9 +42,10 @@ const userSchema = new Schema({
 // run this code first.
 userSchema.pre("save", async function (next) {
     console.log("Initial Password: "+ this.password)
-    // If this is a New Document...
+    // If we have a password... AND
+    // this is a New Document...
     // or we have Modified the Password...
-  if (this.isNew || this.isModified("password")) {
+  if (this.password && this.isNew || this.isModified("password")) {
     // lets make some salt rounds
     const saltRounds = 10;
     // and then encrpyt the password before storing it.

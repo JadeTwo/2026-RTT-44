@@ -1,6 +1,6 @@
 import passport from "passport";
 import { Strategy as GitHubStrategy } from "passport-github2";
-import User from "../models/User";
+import User from "../models/User.js";
 
 // Setting up WHAT strategy that Passport is going ot use
 passport.use(
@@ -9,9 +9,9 @@ passport.use(
     {
       // We need 3 pieces of info
       // the Client ID
-      clientID: process.env.GITHUB_CLIENT_ID,
+      clientID: process.env.GITHUB_CLIENT_ID, // Kinda like a Username for the application
       //   the Client Secret
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET, // Kinda like the Password, for the application
       //   AND the Github Callback URL
       callbackURL: process.env.GITHUB_CALLBACK_URL, // e.g., 'http://localhost:3001/api/users/auth/github/callback'
     },
@@ -28,10 +28,11 @@ passport.use(
 
         // If it's a new user, create a record in our database
         const newUser = new User({
-          githubId: profile.id,
-          username: profile.username,
-          email: profile.emails[0].value, // Some providers return an array of emails
+            username: profile.username, // get the username from GitHub
+          githubId: profile.id, // And the GitHub ID (which tells the User we don't need a password)
+          email: profile._json.email, // Some providers return an array of emails
         });
+
 
         await newUser.save();
         done(null, newUser);
