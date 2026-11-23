@@ -12,6 +12,9 @@ dns.setServers(["1.1.1.1", "8.8.8.8"]);
 // Define our App
 const app = express();
 
+// bring in our auth middleware
+import { authMiddleware } from "./utils/auth.js";
+
 app.use(express.json());
 
 // and the PORT we will use to connect to it
@@ -88,36 +91,21 @@ app.post("/api/users/login", async (req, res) => {
   // If both are true, the user is authenticated!
 });
 
-// endpoint where we will check our token
-app.post("/api/users/token", (req, res) => {
-  let token = req.headers.authorization;
-  console.log(token);
+// protected route (for user's profile)
+app.get("/api/profile", authMiddleware, async (req, res) => {
 
-  if (token) {
-    // Split the token string on the space between Bearer and the actual token
-    token = token.split(" ");
-    // return JSUT the last value in that split array (the token)
-    token = token.pop();
-    // and remove any additional whitespace from the token
-    token = token.trim();
+  // access the token payload (we have access to this user property thanks to the middleware)
+  console.log(req.user)
 
-    // This can also be done in one line:
-    // token = token.split(" ").pop().trim()
-  }
-  if (!token) {
-    return res.status(401).json({ message: "No token found!" });
-  }
-  try {
-    // The decoded object will contain the original payload ({ data: { _id, ... } })
-    // jwt.verify is what we use to CHECK the Signed token
-    const { data } = jwt.verify(token, secret, { maxAge: "2h" });
-    req.user = data; // Attach user data to the request object
-    res.status(200).send("Token Verified! You are allowed in the Park!")
-  } catch {
-    return res.status(401).json({ message: "Invalid token!" });
-  }
-//   res.send("Here is where we will verify the token");
-});
+  // send back some user information
+  const user = await User.findById(req.user._id)
+    .select({ password: 0 })
+
+  console.log(user);
+
+
+  res.status(200).json(user);
+})
 
 app.listen(PORT, () => {
   console.log("Server running at http://localhost:" + PORT);

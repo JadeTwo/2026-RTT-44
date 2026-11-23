@@ -36,6 +36,13 @@ app.post("/api/books", async (req, res) => {
         publicationYear: req.body.publicationYear
     });
 
+    // alternative
+    // const newBook2 = Book.create({
+    //     title: req.body.title,
+    //     author: req.body.author,
+    //     publicationYear: req.body.publicationYear
+    // })
+
     // save the document to our database (permanently)
     await newBook.save();
 
@@ -43,8 +50,31 @@ app.post("/api/books", async (req, res) => {
     res.status(201).json(newBook);
 })
 
-app.get("/", (req, res) => {
-    res.send("Hello World!");
+// Route Parameter of "id"
+app.get("/api/books/:id", async (req, res) => {
+
+    // defining an id that we know exists (hardcoding)
+    let id = req.params.id;
+
+    // use that id to find the document with that id
+    const foundBook = await Book.findById(id)
+
+    // send back that document
+    res.status(200).json(foundBook);
 })
+
+// Route for deleting a book by "id"
+app.delete("/api/books/:id", async (req, res) => {
+    
+    // grab the id from the Route Parameter ("id")
+    let id = req.params.id;
+
+    // use that id to find the document and delete it
+    await Book.findByIdAndDelete(id);
+
+    // send back a response
+    res.status(200).json({ message: `book with id ${id} deleted` })
+})
+
 
 app.listen(port, () => console.log('Server running on port: ' + port))
